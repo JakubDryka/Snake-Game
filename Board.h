@@ -1,6 +1,7 @@
 #ifndef BOARD_H
 #define BOARD_H
 #include <array>
+#include "Player.h"
 
 const unsigned BOARD_HEIGHT = 10;
 const unsigned BOARD_WIDTH = 20;
@@ -13,7 +14,7 @@ class Board
     void printBoard();
     void makeFrame();
     Board();
-    void initializeBoard();
+    void initializeBoard(Player player1);
 };
 
 #endif // BOARD_H
