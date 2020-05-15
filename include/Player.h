@@ -12,6 +12,8 @@ class Player
     protected:
 
     private:
+        unsigned int _points = 0;
+        void movePlayer();
 
 };
 
