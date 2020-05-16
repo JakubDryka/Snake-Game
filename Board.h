@@ -11,7 +11,7 @@ class Board
 {
     public:
     GameBoardArray _board;
-    void printBoard();
+    void printBoard(Player player1);
     void makeFrame();
     Board();
     void initializeBoard(Player player1);

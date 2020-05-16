@@ -6,13 +6,20 @@ Board::Board()
     GameBoardArray _board;
 }
 
-void Board::printBoard()
+void Board::printBoard(Player player1)
     {
         for(int i=0; i< BOARD_HEIGHT ; i++)
         {
             for(int j=0; j< BOARD_WIDTH; j++)
             {
-                std::cout << this->_board[i][j];
+                if(j == player1._playerXcord && i == player1._playerYcord)
+                {
+                    std::cout<< "S";
+                }
+                else
+                {
+                    std::cout << this->_board[i][j];
+                }
             }
             std::cout << std::endl;
         }
@@ -42,11 +49,6 @@ void Board::initializeBoard(Player player1)
         for(int i=0; i< BOARD_HEIGHT ; i++)
             for(int j=0; j< BOARD_WIDTH; j++)
             {
-                if(j == player1._playerXcord && i == player1._playerYcord)
-                {
-                    _board[i][j] = 'S';
-                }
-                else
                 {
                     _board[i][j] = '.';
                 }
