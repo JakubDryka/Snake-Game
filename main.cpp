@@ -1,59 +1,36 @@
 #include <iostream>
 #include <array>
-
-const unsigned BOARD_HEIGHT = 10;
-const unsigned BOARD_WIDTH = 20;
-typedef std::array<std::array<char, BOARD_WIDTH>, BOARD_HEIGHT> GameBoardArray;
-
-class Board
-{
-public:
-    void printBoard()
-    {
-        for(int i=0; i< BOARD_HEIGHT ; i++)
-        {
-            for(int j=0; j< BOARD_WIDTH; j++)
-            {
-                std::cout << board[i][j];
-            }
-            std::cout << std::endl;
-        }
-    }
-
-
-    void makeFrame()
-    {
-        for(int i=0; i< BOARD_HEIGHT ; i++)
-        {
-            board[i][0] = '#';
-            board[i][BOARD_WIDTH-1] = '#';
-        }
-
-        for(int j=0; j< BOARD_WIDTH ; j++)
-        {
-            board[0][j] = '#';
-            board[BOARD_HEIGHT-1][j] = '#';
-        }
-    }
-
-
-    void initializeBoard()
-    {
-        for(int i=0; i< BOARD_HEIGHT ; i++)
-            for(int j=0; j< BOARD_WIDTH; j++)
-            {
-                board[i][j] = ' ';
-            }
-        makeFrame();
-    }
-
-GameBoardArray board;
-};
-
+#include <conio.h>
+#include "Board.h"
+#include "GameController.h"
+#include "Player.h"
+#include <cstdlib>
+#include <windows.h>
 
 int main()
 {
+    Player player1;
+    std::cout<<player1._playerDirection<<std::endl;
+    GameController game1;
     Board board;
-    board.initializeBoard();
-    board.printBoard();
+    board.initializeBoard(player1);
+    board.printBoard(player1);
+    char input1;
+
+    do
+    {
+        Sleep(1000);
+        if(_kbhit())
+        {
+            input1 = getch();
+           //FlushConsoleInputBuffer(GetStdHandle(STD_INPUT_HANDLE));
+            game1.Input(input1, player1);
+        }
+        game1.movePlayer(player1);
+        system("cls");
+        std::cout<<(player1._playerDirection)<<std::endl;
+        board.printBoard(player1);
+        std::cout<<("Wcisnij ESC aby zamknac")<<std::endl;
+    } while (input1 != '\x1B');
+    return 0;
 }
