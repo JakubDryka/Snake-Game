@@ -12,28 +12,28 @@ void GameController::Input(char inputFromPlayer, Player player1)
             case UP_ARROW:
             case 'w':
             {
-                player1._playerDirection = UP_ARROW;
+                player1._playerDirection = 'w';
             }
             break;
 
             case LEFT_ARROW:
             case 'a':
             {
-                player1._playerDirection = LEFT_ARROW;
+                player1._playerDirection = 'a';
             }
             break;
 
             case DOWN_ARROW:
             case 's':
             {
-                player1._playerDirection = DOWN_ARROW;
+                player1._playerDirection = 's';
             }
             break;
 
             case RIGHT_ARROW:
             case 'd':
             {
-                player1._playerDirection = RIGHT_ARROW;
+                player1._playerDirection = 'd';
             }
             break;
         }
@@ -43,27 +43,27 @@ void GameController::movePlayer(Player player1)
 {
     switch(player1._playerDirection)
     {
-            case UP_ARROW:
+            case 'w':
             {
-                player1._playerYcord -= 1;
+                player1._playerYcord = player1._playerYcord - 1;
             }
             break;
 
-            case LEFT_ARROW:
+            case 'a':
             {
-                player1._playerXcord -= 1;
+                player1._playerXcord = player1._playerYcord - 1;
             }
             break;
 
-            case DOWN_ARROW:
+            case 's':
             {
-                player1._playerYcord += 1;
+                player1._playerYcord = player1._playerYcord + 1;
             }
             break;
 
-            case RIGHT_ARROW:
+            case 'd':
             {
-                player1._playerXcord += 1;
+                player1._playerXcord = player1._playerYcord + 1;
             }
             break;
     }

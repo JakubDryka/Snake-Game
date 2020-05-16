@@ -13,19 +13,10 @@ class Player
 {
     public:
         Player();
-//        class Player_Segment
-//        {
-//            public
-//        };
-        //std::deque < int> dane;
-        unsigned int _playerXcord = 5;
-        unsigned int _playerYcord = 5;
-        char _playerDirection = UP_ARROW;
-        void setDirection(char newDirection);
+        unsigned int _playerXcord = 1;
+        unsigned int _playerYcord = 1;
+        char _playerDirection = 'a';
         char getDirection();
-
-    protected:
-
     private:
         unsigned int _points = 0;
 };
