@@ -12,52 +12,52 @@ void Player::movePlayer()
     {
             case 'w':
             {
-                if(this->_playerYcord == 1)
+                if(_snakeBody.front().second == 1)
                 {
-                    this->_playerYcord = 8;
+                    _snakeBody.front().second = 8;
                 }
                 else
                 {
-                  this->_playerYcord = this->_playerYcord - 1;
+                  _snakeBody.front().second = _snakeBody.front().second - 1;
                 }
             }
             break;
 
             case 'a':
             {
-                if(this->_playerXcord == 1)
+                if(_snakeBody.front().first == 1)
                 {
-                    this->_playerXcord = 18;
+                    _snakeBody.front().first = 18;
                 }
                 else
                 {
-                  this->_playerXcord = this->_playerXcord - 1;
+                  _snakeBody.front().first = _snakeBody.front().first - 1;
                 }
             }
             break;
 
             case 's':
             {
-                if(this->_playerYcord == 8)
+                if(_snakeBody.front().second == 8)
                 {
-                    this->_playerYcord = 1;
+                    _snakeBody.front().second = 1;
                 }
                 else
                 {
-                  this->_playerYcord = this->_playerYcord + 1;
+                  _snakeBody.front().second = _snakeBody.front().second + 1;
                 }
             }
             break;
 
             case 'd':
             {
-                if(this->_playerXcord == 18)
+                if(_snakeBody.front().first == 18)
                 {
-                    this->_playerXcord = 1;
+                    _snakeBody.front().first = 1;
                 }
                 else
                 {
-                  this->_playerXcord = this->_playerXcord + 1;
+                  _snakeBody.front().first = _snakeBody.front().first + 1;
                 }
             }
             break;
@@ -98,3 +98,47 @@ void Player::useInput(char inputFromPlayer)
         }
 }
 
+void Player::addNewSnakePart()
+{
+    std::pair<int, int> cords;
+    if(_snakeBody.size() <= 0)
+    {
+        cords.first = this->_playerStartXcord;
+        cords.second = this->_playerStartYcord;
+    }
+    else
+    {
+        switch(this->_playerDirection)
+        {
+            case 'w':
+            {
+                cords.second = _snakeBody.front().second - 1;
+                cords.first = _snakeBody.front().first;
+            }
+            break;
+
+            case 'a':
+            {
+                cords.first = _snakeBody.front().first - 1;
+                cords.second = _snakeBody.front().second;
+            }
+            break;
+
+            case 's':
+            {
+                cords.second = _snakeBody.front().second + 1;
+                cords.first = _snakeBody.front().first;
+            }
+            break;
+
+            case 'd':
+            {
+                cords.first = _snakeBody.front().first + 1;
+                cords.second = _snakeBody.front().second;
+            }
+            break;
+        }
+    }
+    std::cout<<"Pod koniec funkcji cords wynosza : "<<cords.first<<cords.second<<std::endl;
+    this->_snakeBody.push_front(cords);
+}

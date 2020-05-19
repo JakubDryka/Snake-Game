@@ -12,7 +12,7 @@ void Board::printBoard(Player player1)
         {
             for(unsigned int j=0; j< BOARD_WIDTH; j++)
             {
-                if(j == player1._playerXcord && i == player1._playerYcord)
+                if(j == player1._snakeBody.at(0).first && i == player1._snakeBody.at(0).second)
                 {
                     std::cout<< "S";
                 }
@@ -66,15 +66,16 @@ void Board::generateFood(Player player1)
     {
         this->_foodXcord = ( std::rand() % 17 ) + 1;
         this->_foodYcord = ( std::rand() % 7 ) + 1;
-    }while(this->_foodXcord == player1._playerXcord && this->_foodYcord == player1._playerYcord);
+    }while(this->_foodXcord == player1._snakeBody.front().first && this->_foodYcord == player1._snakeBody.front().second);
 
 }
 
 void Board::checkIfPlayerAteFood(Player player1)
 {
-    if(this->_foodXcord == player1._playerXcord && this->_foodYcord == player1._playerYcord)
+    if(_foodXcord == player1._snakeBody.front().first && _foodYcord == player1._snakeBody.front().second)
     {
-        player1._points++;
+        player1.addNewSnakePart();
+        player1._points += 1;
         this->generateFood(player1);
     }
 }
