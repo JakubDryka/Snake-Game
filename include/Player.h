@@ -7,17 +7,19 @@
 #define RIGHT_ARROW 77
 
 #include <deque>
-
+#include <iostream>
 
 class Player
 {
     public:
         Player();
-        unsigned int _playerXcord = 1;
-        unsigned int _playerYcord = 1;
-        char _playerDirection = 'a';
-        char getDirection();
-    private:
+        unsigned int _playerStartXcord = 5;
+        unsigned int _playerStartYcord = 5;
+        std::deque<std::pair<int, int>> _snakeBody;
+        void addNewSnakePart();
+        char _playerDirection = 'd';
+        void movePlayer();
+        void useInput(char inputFromPlayer);
         unsigned int _points = 0;
 };
 
