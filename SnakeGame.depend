@@ -1,10 +1,9 @@
 # depslib dependency file v1.0
-1589892380 source:c:\users\kuba\desktop\snake-game\main.cpp
+1589893498 source:c:\users\kuba\desktop\snake-game\main.cpp
 	<iostream>
 	<array>
 	<conio.h>
 	"Board.h"
-	"GameController.h"
 	"Player.h"
 	<cstdlib>
 	<windows.h>
@@ -13,7 +12,7 @@
 
 1589617326 c:\users\kuba\desktop\snake-game\board.h
 
-1589893114 source:c:\users\kuba\desktop\snake-game\src\player.cpp
+1589893244 source:c:\users\kuba\desktop\snake-game\src\player.cpp
 
 1589891424 source:c:\users\kuba\desktop\snake-game\src\gamecontroller.cpp
 

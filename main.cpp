@@ -2,7 +2,6 @@
 #include <array>
 #include <conio.h>
 #include "Board.h"
-#include "GameController.h"
 #include "Player.h"
 #include <cstdlib>
 #include <windows.h>
