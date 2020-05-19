@@ -1,6 +1,11 @@
 #ifndef PLAYER_H
 #define PLAYER_H
 
+#define UP_ARROW    72
+#define LEFT_ARROW  75
+#define DOWN_ARROW  80
+#define RIGHT_ARROW 77
+
 #include <deque>
 
 
@@ -13,7 +18,6 @@ class Player
         char _playerDirection = 'd';
         void movePlayer();
         void useInput(char inputFromPlayer);
-    private:
         unsigned int _points = 0;
 };
 

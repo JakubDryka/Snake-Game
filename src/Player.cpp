@@ -1,5 +1,6 @@
 #include "Player.h"
 
+
 Player::Player()
 {
 
@@ -68,27 +69,32 @@ void Player::useInput(char inputFromPlayer)
     switch(inputFromPlayer)
         {
             case 'w':
+            case UP_ARROW:
             {
                 this->_playerDirection = 'w';
             }
             break;
 
             case 'a':
+            case LEFT_ARROW:
             {
                 this->_playerDirection = 'a';
             }
             break;
 
             case 's':
+            case DOWN_ARROW:
             {
                 this->_playerDirection = 's';
             }
             break;
 
             case 'd':
+            case RIGHT_ARROW:
             {
                 this->_playerDirection = 'd';
             }
             break;
         }
 }
+

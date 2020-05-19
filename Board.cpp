@@ -16,6 +16,10 @@ void Board::printBoard(Player player1)
                 {
                     std::cout<< "S";
                 }
+                else if(j ==_foodXcord && i == _foodYcord)
+                {
+                    std::cout<< "X";
+                }
                 else
                 {
                     std::cout << this->_board[i][j];
@@ -55,3 +59,22 @@ void Board::initializeBoard(Player player1)
             }
         makeFrame();
     }
+
+void Board::generateFood(Player player1)
+{
+    do
+    {
+        this->_foodXcord = ( std::rand() % 17 ) + 1;
+        this->_foodYcord = ( std::rand() % 7 ) + 1;
+    }while(this->_foodXcord == player1._playerXcord && this->_foodYcord == player1._playerYcord);
+
+}
+
+void Board::checkIfPlayerAteFood(Player player1)
+{
+    if(this->_foodXcord == player1._playerXcord && this->_foodYcord == player1._playerYcord)
+    {
+        player1._points++;
+        this->generateFood(player1);
+    }
+}
