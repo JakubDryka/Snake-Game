@@ -36,16 +36,14 @@
 		</Compiler>
 		<Unit filename="Board.cpp" />
 		<Unit filename="Board.h" />
-		<Unit filename="include/GameController.h" />
 		<Unit filename="include/Player.h" />
 		<Unit filename="main.cpp" />
-		<Unit filename="src/GameController.cpp" />
 		<Unit filename="src/Player.cpp" />
 		<Extensions>
+			<lib_finder disable_auto="1" />
 			<code_completion />
 			<envvars />
 			<debugger />
-			<lib_finder disable_auto="1" />
 		</Extensions>
 	</Project>
 </CodeBlocks_project_file>

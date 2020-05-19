@@ -14,8 +14,7 @@ class GameController
 {
     public:
         GameController();
-        void Input(char inputFromPlayer, Player player1);
-        void movePlayer(Player player1);
+
 
     protected:
 

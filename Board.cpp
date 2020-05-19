@@ -3,14 +3,14 @@
 
 Board::Board()
 {
-    GameBoardArray _board;
+
 }
 
 void Board::printBoard(Player player1)
     {
-        for(int i=0; i< BOARD_HEIGHT ; i++)
+        for(unsigned int i=0; i< BOARD_HEIGHT ; i++)
         {
-            for(int j=0; j< BOARD_WIDTH; j++)
+            for(unsigned int j=0; j< BOARD_WIDTH; j++)
             {
                 if(j == player1._playerXcord && i == player1._playerYcord)
                 {
@@ -27,13 +27,13 @@ void Board::printBoard(Player player1)
 
 void Board::makeFrame()
     {
-        for(int i=0; i< BOARD_HEIGHT ; i++)
+        for(unsigned int i=0; i < BOARD_HEIGHT ; i++)
         {
             _board[i][0] = '|';
             _board[i][BOARD_WIDTH-1] = '|';
         }
 
-        for(int j=0; j< BOARD_WIDTH ; j++)
+        for(unsigned int j=0; j < BOARD_WIDTH ; j++)
         {
             _board[0][j] = '-';
             _board[BOARD_HEIGHT-1][j] = '-';
@@ -46,8 +46,8 @@ void Board::makeFrame()
 
 void Board::initializeBoard(Player player1)
     {
-        for(int i=0; i< BOARD_HEIGHT ; i++)
-            for(int j=0; j< BOARD_WIDTH; j++)
+        for(unsigned int i=0; i< BOARD_HEIGHT ; i++)
+            for(unsigned int j=0; j< BOARD_WIDTH; j++)
             {
                 {
                     _board[i][j] = '.';
