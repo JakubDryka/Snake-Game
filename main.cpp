@@ -9,7 +9,6 @@
 int main()
 {
     srand( time( NULL ) );
-
     Player player1;
     player1.addNewSnakePart();
 
@@ -29,19 +28,20 @@ int main()
             player1.useInput(input1);
             FlushConsoleInputBuffer(GetStdHandle(STD_INPUT_HANDLE));
         }
-        board.checkIfPlayerAteFood(player1);
         player1.movePlayer();
         board.checkIfPlayerAteFood(player1);
-        system("cls");
+        board.checkIfPlayerHitHimself(player1);
+        board.printBoard(player1);
+
         std::cout<<"Aktualny kierunek playera to "<<player1._playerDirection<<std::endl;
         std::cout<<"koordynaty food to "<<board._foodXcord<<" i "<<board._foodYcord<<std::endl;
         std::cout<<"Glowa weza znajduje sie na "<<player1._snakeBody.front().first<<", "<<player1._snakeBody.front().second<<std::endl;
         std::cout<<"Rozmiar weza to "<<player1._snakeBody.size()<<std::endl;
-
-        board.printBoard(player1);
         std::cout<<"Wcisnij ESC aby zamknac"<<std::endl;
         std::cout<<"Liczba zdobytych punktow: "<<player1._points<<std::endl;
-    } while (input1 != '\x1B');
+    } while (input1 != '\x1B' && board.gameEnded == false);
+    board.gameEnd(player1);
+
 
 
     return 0;

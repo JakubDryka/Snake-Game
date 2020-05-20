@@ -30,12 +30,14 @@ void Player::movePlayer()
             {
                 _snakeBody.push_front(_snakeBody.back());
                 _snakeBody.pop_back();
+                _snakeBody.front().first = _snakeBody.at(1).first;
                 _snakeBody.front().second = 8;
             }
             else
             {
                 _snakeBody.push_front(_snakeBody.back());
                 _snakeBody.pop_back();
+                _snakeBody.front().first = _snakeBody.at(1).first;
                 _snakeBody.front().second = _snakeBody.at(1).second - 1;
             }
         }
@@ -61,12 +63,14 @@ void Player::movePlayer()
             {
                 _snakeBody.push_front(_snakeBody.back());
                 _snakeBody.pop_back();
+                _snakeBody.front().second = _snakeBody.at(1).second;
                 _snakeBody.front().first = 18;
             }
             else
             {
                 _snakeBody.push_front(_snakeBody.back());
                 _snakeBody.pop_back();
+                _snakeBody.front().second = _snakeBody.at(1).second;
                 _snakeBody.front().first = _snakeBody.at(1).first - 1;
             }
         }
@@ -93,12 +97,14 @@ void Player::movePlayer()
             {
                 _snakeBody.push_front(_snakeBody.back());
                 _snakeBody.pop_back();
+                _snakeBody.front().first = _snakeBody.at(1).first;
                 _snakeBody.front().second = 1;
             }
             else
             {
                 _snakeBody.push_front(_snakeBody.back());
                 _snakeBody.pop_back();
+                _snakeBody.front().first = _snakeBody.at(1).first;
                 _snakeBody.front().second = _snakeBody.at(1).second + 1;
             }
         }
@@ -124,12 +130,14 @@ void Player::movePlayer()
             {
                 _snakeBody.push_front(_snakeBody.back());
                 _snakeBody.pop_back();
+                _snakeBody.front().second = _snakeBody.at(1).second;
                 _snakeBody.front().first = 1;
             }
             else
             {
                 _snakeBody.push_front(_snakeBody.back());
                 _snakeBody.pop_back();
+                _snakeBody.front().second = _snakeBody.at(1).second;
                 _snakeBody.front().first = _snakeBody.at(1).first + 1;;
             }
 
@@ -189,28 +197,56 @@ void Player::addNewSnakePart()
         {
         case 'w':
         {
-            cords.second = _snakeBody.front().second - 1;
+            if(_snakeBody.front().second == 1)
+            {
+                cords.second = 8;
+            }
+            else
+            {
+               cords.second = _snakeBody.front().second - 1;
+            }
             cords.first = _snakeBody.front().first;
         }
         break;
 
         case 'a':
         {
-            cords.first = _snakeBody.front().first - 1;
+            if(_snakeBody.front().first == 1)
+            {
+                cords.first = 18;
+            }
+            else
+            {
+               cords.first = _snakeBody.front().first - 1;
+            }
             cords.second = _snakeBody.front().second;
         }
         break;
 
         case 's':
         {
-            cords.second = _snakeBody.front().second + 1;
+            if(_snakeBody.front().second == 8)
+            {
+                cords.second = 1;
+            }
+            else
+            {
+               cords.second = _snakeBody.front().second + 1;
+            }
             cords.first = _snakeBody.front().first;
         }
         break;
 
         case 'd':
         {
-            cords.first = _snakeBody.front().first + 1;
+            if(_snakeBody.front().first == 18)
+            {
+                cords.first = 1;
+            }
+            else
+            {
+               cords.first = _snakeBody.front().first + 1;
+            }
             cords.second = _snakeBody.front().second;
         }
         break;
