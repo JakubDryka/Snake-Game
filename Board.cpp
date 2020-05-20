@@ -72,11 +72,19 @@ void Board::initializeBoard(Player player1)
 
 void Board::generateFood(Player player1)
 {
+    bool isInPlayer = false;
     do
     {
         this->_foodXcord = ( std::rand() % 17 ) + 1;
         this->_foodYcord = ( std::rand() % 7 ) + 1;
-    }while(this->_foodXcord == player1._snakeBody.front().first && this->_foodYcord == player1._snakeBody.front().second);
+        for(int q = 0; q < player1._snakeBody.size(); q++)
+        {
+            if(this->_foodXcord == player1._snakeBody.at(q).first && this->_foodYcord == player1._snakeBody.at(q).second)
+            {
+                isInPlayer = true;
+            }
+        }
+    }while(isInPlayer);
 
 }
 
