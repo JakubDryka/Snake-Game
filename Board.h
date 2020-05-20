@@ -1,6 +1,8 @@
 #ifndef BOARD_H
 #define BOARD_H
 #include <array>
+#include <cstdlib>
+#include "windows.h"
 #include "Player.h"
 
 const unsigned BOARD_HEIGHT = 10;
@@ -16,9 +18,12 @@ class Board
     Board();
     unsigned int _foodXcord = 21;
     unsigned int _foodYcord = 11;
+    bool gameEnded = false;
     void generateFood(Player player1);
     void checkIfPlayerAteFood(Player &player1);
+    void checkIfPlayerHitHimself(Player &player1);
     void initializeBoard(Player player1);
+    void gameEnd(Player player1);
 };
 
 #endif // BOARD_H

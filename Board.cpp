@@ -20,6 +20,7 @@ void Board::printBoard(Player player1)
                 {
                     havePrinted = true;
                     std::cout<< "S";
+                    break;
                 }
             }
             if(j ==_foodXcord && i == _foodYcord)
@@ -86,5 +87,24 @@ void Board::checkIfPlayerAteFood(Player &player1)
         player1.addNewSnakePart();
         player1._points += 1;
         this->generateFood(player1);
+    }
+}
+
+void Board::gameEnd(Player player1)
+{
+    system("cls");
+    std::cout<< "Gratulacje, uzyskales "<<player1._points<<" punktow.";
+    Sleep(5000);
+}
+
+void Board::checkIfPlayerHitHimself(Player &player1)
+{
+    for(unsigned int o = 1; o < player1._snakeBody.size(); o++)
+    {
+        if(player1._snakeBody.front().first == player1._snakeBody.at(o).first && player1._snakeBody.front().second == player1._snakeBody.at(o).second)
+        {
+            this->gameEnded = true;
+            gameEnd(player1);
+        }
     }
 }
