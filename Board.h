@@ -17,7 +17,7 @@ class Board
     unsigned int _foodXcord = 21;
     unsigned int _foodYcord = 11;
     void generateFood(Player player1);
-    void checkIfPlayerAteFood(Player player1);
+    void checkIfPlayerAteFood(Player &player1);
     void initializeBoard(Player player1);
 };
 

@@ -32,13 +32,12 @@ int main()
         board.checkIfPlayerAteFood(player1);
         player1.movePlayer();
         board.checkIfPlayerAteFood(player1);
-        system("cls");
+        board.printBoard(player1);
+
         std::cout<<"Aktualny kierunek playera to "<<player1._playerDirection<<std::endl;
         std::cout<<"koordynaty food to "<<board._foodXcord<<" i "<<board._foodYcord<<std::endl;
         std::cout<<"Glowa weza znajduje sie na "<<player1._snakeBody.front().first<<", "<<player1._snakeBody.front().second<<std::endl;
         std::cout<<"Rozmiar weza to "<<player1._snakeBody.size()<<std::endl;
-
-        board.printBoard(player1);
         std::cout<<"Wcisnij ESC aby zamknac"<<std::endl;
         std::cout<<"Liczba zdobytych punktow: "<<player1._points<<std::endl;
     } while (input1 != '\x1B');

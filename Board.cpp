@@ -7,27 +7,36 @@ Board::Board()
 }
 
 void Board::printBoard(Player player1)
+{
+    system("cls");
+    for(unsigned int i=0; i< BOARD_HEIGHT ; i++)
     {
-        for(unsigned int i=0; i< BOARD_HEIGHT ; i++)
+        for(unsigned int j=0; j< BOARD_WIDTH; j++)
         {
-            for(unsigned int j=0; j< BOARD_WIDTH; j++)
+            bool havePrinted = false;
+            for(unsigned int z=0; z< player1._snakeBody.size(); z++)
             {
-                if(j == player1._snakeBody.at(0).first && i == player1._snakeBody.at(0).second)
+                if(j == player1._snakeBody.at(z).first && i == player1._snakeBody.at(z).second)
                 {
+                    havePrinted = true;
                     std::cout<< "S";
                 }
-                else if(j ==_foodXcord && i == _foodYcord)
-                {
-                    std::cout<< "X";
-                }
-                else
-                {
-                    std::cout << this->_board[i][j];
-                }
             }
-            std::cout << std::endl;
+            if(j ==_foodXcord && i == _foodYcord)
+            {
+                std::cout<< "X";
+                havePrinted = true;
+            }
+            if(!havePrinted)
+            {
+                std::cout << this->_board[i][j];
+            }
         }
+        std::cout << std::endl;
     }
+}
+
+
 
 void Board::makeFrame()
     {
@@ -70,7 +79,7 @@ void Board::generateFood(Player player1)
 
 }
 
-void Board::checkIfPlayerAteFood(Player player1)
+void Board::checkIfPlayerAteFood(Player &player1)
 {
     if(_foodXcord == player1._snakeBody.front().first && _foodYcord == player1._snakeBody.front().second)
     {
