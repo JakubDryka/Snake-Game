@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1589995629 source:c:\users\kuba\desktop\snake-game\main.cpp
+1590164811 source:c:\users\kuba\desktop\snake-game\main.cpp
 	<iostream>
 	<array>
 	<conio.h>
@@ -8,11 +8,11 @@
 	<windows.h>
 	<ctime>
 
-1589998134 source:c:\users\kuba\desktop\snake-game\board.cpp
+1590165628 source:c:\users\kuba\desktop\snake-game\board.cpp
 
-1589995428 c:\users\kuba\desktop\snake-game\board.h
+1590163666 c:\users\kuba\desktop\snake-game\board.h
 
-1589992596 source:c:\users\kuba\desktop\snake-game\src\player.cpp
+1590163814 source:c:\users\kuba\desktop\snake-game\src\player.cpp
 
 1589891424 source:c:\users\kuba\desktop\snake-game\src\gamecontroller.cpp
 
