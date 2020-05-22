@@ -11,19 +11,21 @@ typedef std::array<std::array<char, BOARD_WIDTH>, BOARD_HEIGHT> GameBoardArray;
 
 class Board
 {
-    public:
+public:
     GameBoardArray _board;
-    void printBoard(Player player1);
-    void makeFrame();
-    Board();
     unsigned int _foodXcord = 21;
     unsigned int _foodYcord = 11;
     bool gameEnded = false;
+    void printBoard(Player player1);
+    void makeFrame();
     void generateFood(Player player1);
     void checkIfPlayerAteFood(Player &player1);
     void checkIfPlayerHitHimself(Player &player1);
     void initializeBoard(Player player1);
     void gameEnd(Player player1);
+    void printData(Board board, Player player1);
+    void printStartMenu();
+    Board();
 };
 
 #endif // BOARD_H

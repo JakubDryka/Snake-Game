@@ -11,16 +11,17 @@
 
 class Player
 {
-    public:
-        Player();
-        unsigned int _playerStartXcord = 5;
-        unsigned int _playerStartYcord = 5;
-        std::deque<std::pair<int, int>> _snakeBody;
-        void addNewSnakePart();
-        char _playerDirection = 'd';
-        void movePlayer();
-        void useInput(char inputFromPlayer);
-        unsigned int _points = 0;
+public:
+    Player();
+    unsigned int _playerStartXcord = 5;
+    unsigned int _playerStartYcord = 5;
+    unsigned int _points = 0;
+    char _playerDirection = 'd';
+    std::deque<std::pair<int, int>> _snakeBody;
+    void addNewSnakePart();
+    void movePlayer();
+    void useInput(char inputFromPlayer);
+
 };
 
 #endif // PLAYER_H

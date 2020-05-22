@@ -1,6 +1,5 @@
 #include "Player.h"
 
-
 Player::Player()
 {
 
@@ -10,7 +9,6 @@ void Player::movePlayer()
 {
     switch(this->_playerDirection)
     {
-
     case 'w':
     {
         if(_snakeBody.size() <= 1)
@@ -144,8 +142,7 @@ void Player::movePlayer()
         }
         break;
     }
-
-  }
+    }
 }
 
 
@@ -203,7 +200,7 @@ void Player::addNewSnakePart()
             }
             else
             {
-               cords.second = _snakeBody.front().second - 1;
+                cords.second = _snakeBody.front().second - 1;
             }
             cords.first = _snakeBody.front().first;
         }
@@ -217,7 +214,7 @@ void Player::addNewSnakePart()
             }
             else
             {
-               cords.first = _snakeBody.front().first - 1;
+                cords.first = _snakeBody.front().first - 1;
             }
             cords.second = _snakeBody.front().second;
         }
@@ -231,7 +228,7 @@ void Player::addNewSnakePart()
             }
             else
             {
-               cords.second = _snakeBody.front().second + 1;
+                cords.second = _snakeBody.front().second + 1;
             }
             cords.first = _snakeBody.front().first;
         }
@@ -245,13 +242,13 @@ void Player::addNewSnakePart()
             }
             else
             {
-               cords.first = _snakeBody.front().first + 1;
+                cords.first = _snakeBody.front().first + 1;
             }
             cords.second = _snakeBody.front().second;
         }
         break;
         }
     }
-    std::cout<<"Pod koniec funkcji cords wynosza : "<<cords.first<<cords.second<<std::endl;
     this->_snakeBody.push_front(cords);
+    std::cout<<"Nowa czesc dodana prawdi³owo, jej koordynaty to "<<cords.first<<", "<<cords.second;
 }
