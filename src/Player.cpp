@@ -250,5 +250,29 @@ void Player::addNewSnakePart()
         }
     }
     this->_snakeBody.push_front(cords);
-    std::cout<<"Nowa czesc dodana prawdi³owo, jej koordynaty to "<<cords.first<<", "<<cords.second;
+}
+
+void Player::addPoints(int amount)
+{
+    _points++;
+}
+
+int Player::getPoints()
+{
+    return _points;
+}
+
+int Player::getSnakeSize()
+{
+    return _snakeBody.size();
+}
+
+int Player::getSnakesPartCordX(int numberOfPart)
+{
+    return _snakeBody.at(numberOfPart).first;
+}
+
+int Player::getSnakesPartCordY(int numberOfPart)
+{
+    return _snakeBody.at(numberOfPart).second;
 }

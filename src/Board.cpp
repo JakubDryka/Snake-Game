@@ -14,9 +14,9 @@ void Board::printBoard(Player player1)
         for(unsigned int j=0; j< BOARD_WIDTH; j++)
         {
             bool havePrinted = false;
-            for(unsigned int z=0; z< player1._snakeBody.size(); z++)
+            for(unsigned int z=0; z< player1.getSnakeSize(); z++)
             {
-                if(j == player1._snakeBody.at(z).first && i == player1._snakeBody.at(z).second)
+                if(j == player1.getSnakesPartCordX(z) && i == player1.getSnakesPartCordY(z))
                 {
                     havePrinted = true;
                     std::cout<< "S";
@@ -75,11 +75,12 @@ void Board::generateFood(Player player1)
     bool isInPlayer = false;
     do
     {
+        isInPlayer = false;
         this->_foodXcord = ( std::rand() % 17 ) + 1;
         this->_foodYcord = ( std::rand() % 7 ) + 1;
-        for(int q = 0; q < player1._snakeBody.size(); q++)
+        for(int q = 0; q < player1.getSnakeSize(); q++)
         {
-            if(this->_foodXcord == player1._snakeBody.at(q).first && this->_foodYcord == player1._snakeBody.at(q).second)
+            if(this->_foodXcord == player1.getSnakesPartCordX(q) && this->_foodYcord == player1.getSnakesPartCordY(q))
             {
                 isInPlayer = true;
             }
@@ -91,10 +92,10 @@ void Board::generateFood(Player player1)
 
 void Board::checkIfPlayerAteFood(Player &player1)
 {
-    if(_foodXcord == player1._snakeBody.front().first && _foodYcord == player1._snakeBody.front().second)
+    if(_foodXcord == player1.getSnakesPartCordX(0) && _foodYcord == player1.getSnakesPartCordY(0))
     {
         player1.addNewSnakePart();
-        player1._points += 1;
+        player1.addPoints(1);
         this->generateFood(player1);
     }
 }
@@ -102,31 +103,32 @@ void Board::checkIfPlayerAteFood(Player &player1)
 void Board::gameEnd(Player player1)
 {
     system("cls");
-    std::cout<< "Gratulacje, uzyskales "<<player1._points<<" punktow.";
+    if(player1.getPoints() == 1)
+    {
+        std::cout<< "Gratulacje, uzyskales "<<player1.getPoints()<<" punkt.";
+    }
+    else if(player1.getPoints() >= 2 && player1.getPoints() <= 4)
+    {
+        std::cout<< "Gratulacje, uzyskales "<<player1.getPoints()<<" punkty.";
+    }
+    else
+    {
+        std::cout<< "Gratulacje, uzyskales "<<player1.getPoints()<<" punktow.";
+    }
     Sleep(5000);
 }
 
 void Board::checkIfPlayerHitHimself(Player &player1)
 {
-    for(unsigned int o = 1; o < player1._snakeBody.size(); o++)
+    for(unsigned int h = 1; h < player1.getSnakeSize(); h++)
     {
-        if(player1._snakeBody.front().first == player1._snakeBody.at(o).first && player1._snakeBody.front().second == player1._snakeBody.at(o).second)
+        if(player1.getSnakesPartCordX(0) == player1.getSnakesPartCordX(h) && player1.getSnakesPartCordY(0) == player1.getSnakesPartCordY(h))
         {
             this->gameEnded = true;
             gameEnd(player1);
         }
     }
     std::cout<<"Sprawdzono, nie dosz³o do kolizji";
-}
-
-void Board::printData(Board board, Player player1)
-{
-    std::cout<<"Aktualny kierunek playera to "<<player1._playerDirection<<std::endl;
-    std::cout<<"koordynaty food to "<<board._foodXcord<<" i "<<board._foodYcord<<std::endl;
-    std::cout<<"Glowa weza znajduje sie na "<<player1._snakeBody.front().first<<", "<<player1._snakeBody.front().second<<std::endl;
-    std::cout<<"Rozmiar weza to "<<player1._snakeBody.size()<<std::endl;
-    std::cout<<"Wcisnij ESC aby zamknac"<<std::endl;
-    std::cout<<"Liczba zdobytych punktow: "<<player1._points<<std::endl;
 }
 
 void Board::printStartMenu()
