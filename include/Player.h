@@ -8,20 +8,21 @@
 
 #include <deque>
 #include <iostream>
+#include <array>
+
+const unsigned BOARD_HEIGHT = 10;
+const unsigned BOARD_WIDTH = 20;
+typedef std::array<std::array<char, BOARD_WIDTH>, BOARD_HEIGHT> GameBoardArray;
 
 class Player
 {
-    unsigned int _playerStartXcord = 5;
-    unsigned int _playerStartYcord = 5;
+    unsigned int _playerStartXcord = 1;
+    unsigned int _playerStartYcord = 1;
     unsigned int _points = 0;
     char _playerDirection = 'd';
     std::deque<std::pair<int, int>> _snakeBody;
-//    void addNewSnakePart();
-//    void movePlayer();
-//    void useInput(char inputFromPlayer);
-public:
+   public:
     Player();
-    //std::deque<std::pair<int, int>> _snakeBody;
     void addNewSnakePart();
     void movePlayer();
     void useInput(char inputFromPlayer);

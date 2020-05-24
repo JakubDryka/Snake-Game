@@ -23,7 +23,7 @@ void Board::printBoard(Player player1)
                     break;
                 }
             }
-            if(j ==_foodXcord && i == _foodYcord)
+            if(j ==_foodCord.first && i == _foodCord.second)
             {
                 std::cout<< "X";
                 havePrinted = true;
@@ -60,6 +60,8 @@ void Board::makeFrame()
 
 void Board::initializeBoard(Player player1)
 {
+    _foodCord.first = BOARD_WIDTH + 1;
+    _foodCord.second = BOARD_HEIGHT + 1;
     for(unsigned int i=0; i< BOARD_HEIGHT ; i++)
         for(unsigned int j=0; j< BOARD_WIDTH; j++)
         {
@@ -72,15 +74,16 @@ void Board::initializeBoard(Player player1)
 
 void Board::generateFood(Player player1)
 {
+
     bool isInPlayer = false;
     do
     {
         isInPlayer = false;
-        this->_foodXcord = ( std::rand() % 17 ) + 1;
-        this->_foodYcord = ( std::rand() % 7 ) + 1;
+        _foodCord.first = ( std::rand() % 17 ) + 1;
+        _foodCord.second = ( std::rand() % 7 ) + 1;
         for(int q = 0; q < player1.getSnakeSize(); q++)
         {
-            if(this->_foodXcord == player1.getSnakesPartCordX(q) && this->_foodYcord == player1.getSnakesPartCordY(q))
+            if(this->_foodCord.first == player1.getSnakesPartCordX(q) && this->_foodCord.second == player1.getSnakesPartCordY(q))
             {
                 isInPlayer = true;
             }
@@ -92,7 +95,7 @@ void Board::generateFood(Player player1)
 
 void Board::checkIfPlayerAteFood(Player &player1)
 {
-    if(_foodXcord == player1.getSnakesPartCordX(0) && _foodYcord == player1.getSnakesPartCordY(0))
+    if(_foodCord.first == player1.getSnakesPartCordX(0) && _foodCord.second == player1.getSnakesPartCordY(0))
     {
         player1.addNewSnakePart();
         player1.addPoints(1);
@@ -128,7 +131,6 @@ void Board::checkIfPlayerHitHimself(Player &player1)
             gameEnd(player1);
         }
     }
-    std::cout<<"Sprawdzono, nie dosz³o do kolizji";
 }
 
 void Board::printStartMenu()

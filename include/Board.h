@@ -5,17 +5,12 @@
 #include "windows.h"
 #include "Player.h"
 
-const unsigned BOARD_HEIGHT = 10;
-const unsigned BOARD_WIDTH = 20;
-typedef std::array<std::array<char, BOARD_WIDTH>, BOARD_HEIGHT> GameBoardArray;
-
 class Board
 {
     void makeFrame();
+    std::pair<int, int> _foodCord;
 public:
     GameBoardArray _board;
-    unsigned int _foodXcord = 21;
-    unsigned int _foodYcord = 11;
     bool gameEnded = false;
     void printBoard(Player player1);
     void generateFood(Player player1);
