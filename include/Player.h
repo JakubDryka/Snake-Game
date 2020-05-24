@@ -21,7 +21,7 @@ class Player
     unsigned int _points = 0;
     char _playerDirection = 'd';
     std::deque<std::pair<int, int>> _snakeBody;
-   public:
+public:
     Player();
     void addNewSnakePart();
     void movePlayer();

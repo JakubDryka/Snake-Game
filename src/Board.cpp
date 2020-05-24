@@ -136,7 +136,7 @@ void Board::checkIfPlayerHitHimself(Player &player1)
 void Board::printStartMenu()
 {
     std::cout<<std::endl;
-    std::cout<<"Welcome in crazy game called Snake."<<std::endl;
+    std::cout<<"Welcome in game called Snake."<<std::endl;
     std::cout<<std::endl;
     std::cout<<"If you want to play, just click 'p' button"<<std::endl;
     std::cout<<"You can play my game using WASD or if you want keyboard arrows"<<std::endl;

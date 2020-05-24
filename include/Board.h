@@ -9,8 +9,8 @@ class Board
 {
     void makeFrame();
     std::pair<int, int> _foodCord;
-public:
     GameBoardArray _board;
+public:
     bool gameEnded = false;
     void printBoard(Player player1);
     void generateFood(Player player1);

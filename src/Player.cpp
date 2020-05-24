@@ -151,6 +151,7 @@ void Player::useInput(char inputFromPlayer)
     switch(inputFromPlayer)
     {
     case 'w':
+    case 'W':
     case UP_ARROW:
     {
         this->_playerDirection = 'w';
@@ -158,6 +159,7 @@ void Player::useInput(char inputFromPlayer)
     break;
 
     case 'a':
+    case 'A':
     case LEFT_ARROW:
     {
         this->_playerDirection = 'a';
@@ -165,6 +167,7 @@ void Player::useInput(char inputFromPlayer)
     break;
 
     case 's':
+    case 'S':
     case DOWN_ARROW:
     {
         this->_playerDirection = 's';
@@ -172,6 +175,7 @@ void Player::useInput(char inputFromPlayer)
     break;
 
     case 'd':
+    case 'D':
     case RIGHT_ARROW:
     {
         this->_playerDirection = 'd';
