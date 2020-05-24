@@ -15,7 +15,7 @@ void Player::movePlayer()
         {
             if(_snakeBody.front().second == 1)
             {
-                _snakeBody.front().second = 8;
+                _snakeBody.front().second = BOARD_HEIGHT - 2;
             }
             else
             {
@@ -29,7 +29,7 @@ void Player::movePlayer()
                 _snakeBody.push_front(_snakeBody.back());
                 _snakeBody.pop_back();
                 _snakeBody.front().first = _snakeBody.at(1).first;
-                _snakeBody.front().second = 8;
+                _snakeBody.front().second = BOARD_HEIGHT - 2;
             }
             else
             {
@@ -48,7 +48,7 @@ void Player::movePlayer()
         {
             if(_snakeBody.front().first == 1)
             {
-                _snakeBody.front().first = 18;
+                _snakeBody.front().first = BOARD_WIDTH - 2;
             }
             else
             {
@@ -62,7 +62,7 @@ void Player::movePlayer()
                 _snakeBody.push_front(_snakeBody.back());
                 _snakeBody.pop_back();
                 _snakeBody.front().second = _snakeBody.at(1).second;
-                _snakeBody.front().first = 18;
+                _snakeBody.front().first = BOARD_WIDTH - 2;
             }
             else
             {
@@ -80,7 +80,7 @@ void Player::movePlayer()
     {
         if(_snakeBody.size() <= 1)
         {
-            if(_snakeBody.front().second == 8)
+            if(_snakeBody.front().second == BOARD_HEIGHT - 2)
             {
                 _snakeBody.front().second = 1;
             }
@@ -91,7 +91,7 @@ void Player::movePlayer()
         }
         else
         {
-            if(_snakeBody.front().second == 8)
+            if(_snakeBody.front().second == BOARD_HEIGHT - 2)
             {
                 _snakeBody.push_front(_snakeBody.back());
                 _snakeBody.pop_back();
@@ -113,7 +113,7 @@ void Player::movePlayer()
     {
         if(_snakeBody.size() <= 1)
         {
-            if(_snakeBody.front().first == 18)
+            if(_snakeBody.front().first == BOARD_WIDTH - 2)
             {
                 _snakeBody.front().first = 1;
             }
@@ -124,7 +124,7 @@ void Player::movePlayer()
         }
         else
         {
-            if(_snakeBody.front().first == 18)
+            if(_snakeBody.front().first == BOARD_WIDTH - 2)
             {
                 _snakeBody.push_front(_snakeBody.back());
                 _snakeBody.pop_back();
@@ -151,6 +151,7 @@ void Player::useInput(char inputFromPlayer)
     switch(inputFromPlayer)
     {
     case 'w':
+    case 'W':
     case UP_ARROW:
     {
         this->_playerDirection = 'w';
@@ -158,6 +159,7 @@ void Player::useInput(char inputFromPlayer)
     break;
 
     case 'a':
+    case 'A':
     case LEFT_ARROW:
     {
         this->_playerDirection = 'a';
@@ -165,6 +167,7 @@ void Player::useInput(char inputFromPlayer)
     break;
 
     case 's':
+    case 'S':
     case DOWN_ARROW:
     {
         this->_playerDirection = 's';
@@ -172,6 +175,7 @@ void Player::useInput(char inputFromPlayer)
     break;
 
     case 'd':
+    case 'D':
     case RIGHT_ARROW:
     {
         this->_playerDirection = 'd';
@@ -182,11 +186,11 @@ void Player::useInput(char inputFromPlayer)
 
 void Player::addNewSnakePart()
 {
-    std::pair<int, int> cords;
+    std::pair<int, int> newcords;
     if(_snakeBody.size() <= 0)
     {
-        cords.first = this->_playerStartXcord;
-        cords.second = this->_playerStartYcord;
+        newcords.first = this->_playerStartXcord;
+        newcords.second = this->_playerStartYcord;
     }
     else
     {
@@ -196,13 +200,13 @@ void Player::addNewSnakePart()
         {
             if(_snakeBody.front().second == 1)
             {
-                cords.second = 8;
+                newcords.second = 8;
             }
             else
             {
-                cords.second = _snakeBody.front().second - 1;
+                newcords.second = _snakeBody.front().second - 1;
             }
-            cords.first = _snakeBody.front().first;
+            newcords.first = _snakeBody.front().first;
         }
         break;
 
@@ -210,13 +214,13 @@ void Player::addNewSnakePart()
         {
             if(_snakeBody.front().first == 1)
             {
-                cords.first = 18;
+                newcords.first = 18;
             }
             else
             {
-                cords.first = _snakeBody.front().first - 1;
+                newcords.first = _snakeBody.front().first - 1;
             }
-            cords.second = _snakeBody.front().second;
+            newcords.second = _snakeBody.front().second;
         }
         break;
 
@@ -224,13 +228,13 @@ void Player::addNewSnakePart()
         {
             if(_snakeBody.front().second == 8)
             {
-                cords.second = 1;
+                newcords.second = 1;
             }
             else
             {
-                cords.second = _snakeBody.front().second + 1;
+                newcords.second = _snakeBody.front().second + 1;
             }
-            cords.first = _snakeBody.front().first;
+            newcords.first = _snakeBody.front().first;
         }
         break;
 
@@ -238,17 +242,41 @@ void Player::addNewSnakePart()
         {
             if(_snakeBody.front().first == 18)
             {
-                cords.first = 1;
+                newcords.first = 1;
             }
             else
             {
-                cords.first = _snakeBody.front().first + 1;
+                newcords.first = _snakeBody.front().first + 1;
             }
-            cords.second = _snakeBody.front().second;
+            newcords.second = _snakeBody.front().second;
         }
         break;
         }
     }
-    this->_snakeBody.push_front(cords);
-    std::cout<<"Nowa czesc dodana prawdi³owo, jej koordynaty to "<<cords.first<<", "<<cords.second;
+    this->_snakeBody.push_front(newcords);
+}
+
+void Player::addPoints(int amount)
+{
+    _points++;
+}
+
+int Player::getPoints()
+{
+    return _points;
+}
+
+int Player::getSnakeSize()
+{
+    return _snakeBody.size();
+}
+
+int Player::getSnakesPartCordX(int numberOfPart)
+{
+    return _snakeBody.at(numberOfPart).first;
+}
+
+int Player::getSnakesPartCordY(int numberOfPart)
+{
+    return _snakeBody.at(numberOfPart).second;
 }
